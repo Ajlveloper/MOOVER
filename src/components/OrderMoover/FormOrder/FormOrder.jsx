@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { postMessage } from "../../../actions";
 import { ShowContext } from "../../../hooks/ShowContext";
 import useForm from "../../../hooks/useForm";
 import ModalSuccess from "../Modal-Success/ModalSuccess";
@@ -13,12 +14,14 @@ const FormOrder = () => {
     estado: false
   });
 
-  const { show, setShow } = useContext(ShowContext);
+  const { show, setShow, dispatch } = useContext(ShowContext);
 
   const { nombre, apellido, correo, mensaje } = value;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    dispatch(postMessage(value))
 
     localStorage.setItem("Orden", JSON.stringify(value));
 

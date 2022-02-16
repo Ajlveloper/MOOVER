@@ -1,6 +1,5 @@
-import React, { useContext, useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { ShowContext } from "../../hooks/ShowContext";
 import "./NavBar.css";
 import { gsap } from "gsap";
 
