@@ -1,0 +1,54 @@
+.inicio h1 {
+    position   : absolute;
+    top        : 26%;
+    right      : 20%;
+    max-width  : 702px;
+    font-size  : 100px;
+    font-weight: bold;
+    color      : var(--color-text-white);
+    line-height: 110px;
+    text-align : right;
+    padding    : 30px;
+}
+
+.inicio::after {
+    content            : '';
+    position           : absolute;
+    top                : 0;
+    right              : 0;
+    left               : 0;
+    bottom             : 0;
+    width              : 100%;
+    height             : 100%;
+    background-image   : url('../../assets/img/pexels-pavel-danilyuk-6407541.jpg');
+    background-position: center center;
+    background-size    : cover;
+    background-repeat  : no-repeat;
+    z-index: -3;
+}
+
+.inicio .overlayTitle::after {
+    content            : "";
+    top                : -77%;
+    right              : -40%;
+    width              : 50%;
+    height             : 10vh;
+    position           : absolute;
+    background-color   : var(--color-orange);
+    z-index            : -1;
+    opacity            : .8;
+    /* border-radius   : 50%; */
+    transform          : scale(4.7) skew(50deg, -78deg) rotate(33deg);
+}
+
+.inicio span {
+    display    : block;
+    position   : absolute;
+    bottom     : 23%;
+    right      : 34%;
+    color      : var(--color-text-white);
+    font-size  : 20px;
+    font-weight: bold;
+    font-style : italic;
+    text-align : right;
+}
