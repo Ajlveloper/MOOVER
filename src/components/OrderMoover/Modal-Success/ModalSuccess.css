@@ -1,0 +1,68 @@
+.content-modal {
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    right           : 0;
+    bottom          : 0;
+    opacity         : 0;
+    background-color: #000000a8;
+    z-index         : -20;
+    transition      : all .5s ease;
+}
+
+.content-modal.show-content-modal {
+    opacity: 1;
+    z-index: 40;
+}
+
+.modal-text {
+    position        : absolute;
+    top             : 32%;
+    left            : 30%;
+    width           : 40%;
+    height          : 40%;
+    background-color: var(--color-orange);
+    box-shadow      : 1px 2px 2px var(--color-orange), 2px 3px 4px var(--color-orange), 3px 4px 5px var(--color-orange);
+    border-radius   : 10px;
+    opacity         : 0;
+    overflow        : hidden;
+    transition      : all .5s ease;
+}
+
+.modal-text.show-modal-text {
+    opacity: 1;
+}
+
+.modal-text button {
+    position        : absolute;
+    top             : 10px;
+    right           : 16px;
+    color           : white;
+    font-size       : 15px;
+    background-color: black;
+    padding         : 10px;
+    border-radius   : 50%;
+    box-shadow      : 1px 2px 2px var(--color-text-black), 1px 2px 4px var(--color-text-black);
+    transition      : all .4s ease;
+}
+
+.modal-text button:hover {
+    color: var(--color-orange)
+}
+
+.modal-text {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.modal-text h2 {
+    max-width  : 450px;
+    line-height: 60px;
+    font-size  : 30px;
+    color      : var(--color-text-white);
+}
+
+.success {
+    color: rgb(64, 189, 64);
+}

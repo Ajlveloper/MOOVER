@@ -1,0 +1,86 @@
+/******************** FORMUARIO MOOVER *************/
+
+
+
+.form-order {
+    flex-basis     : 60%;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.content-form {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    width          : 70%;
+    height         : 80%;
+    box-shadow     : 2px 2px 2px var(--color-orange), -2px 2px 2px var(--color-orange);
+    margin-bottom: 125px;
+}
+
+.title-order {
+    font-size: 50px;
+    text-align: center;
+    text-shadow: 1px 1px 1px var(--color-orange), 2px 1px 3px var(--color-orange)
+}
+
+.content-form .form-order-moover {
+    display        : flex;
+    flex-basis     : 70%;
+    justify-content: space-between;
+    height         : 80%;
+    flex-direction : column;
+    /* transform: translateY(-20%); */
+}
+
+.content-form .form-order-moover div {
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.content-form .form-order-moover div input {
+    padding: 4px;
+}
+
+.button-submit-order {
+    width: 100%;
+    background-color: var(--color-orange);
+    padding: 10px;
+    color: var(--color-text-white);
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px var(--color-orange), 2px 2px 4px var(--color-orange);;
+    transition: all .5s ease;
+}
+
+.button-submit-order:hover {
+    background-color: var(--color-text-white);
+    color: var(--color-orange);
+
+}
+
+.button-submit-order:active {
+    transform: scale(.9);
+}
+
+.errors-desibled {
+    width: 100%;
+    background-color: var(--color-text-white);
+    padding: 10px;
+    color: var(--color-tex-black);
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px var(--color-text-black), 2px 2px 4px var(--color-text-black);
+    transition: all .5s ease;
+}
+
+
+/************ Errors ***********/
+.error {
+    display: inline;
+    color: var(--color-red-dark);
+    transform: translate(1%, -100%);
+    font-size: 11px;
+}

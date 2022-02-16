@@ -49,7 +49,7 @@ const NavBar = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-white" : "text-inactive"
+              isActive ? "link-active" : "text-inactive"
             }
             onClick={handleClose}
           >
@@ -61,7 +61,7 @@ const NavBar = () => {
           <NavLink
             to="/order-moover"
             className={({ isActive }) =>
-              isActive ? "text-white" : "text-inactive"
+              isActive ? "link-active" : "text-inactive"
             }
             onClick={handleClose}
           >
@@ -73,7 +73,7 @@ const NavBar = () => {
           <NavLink
             to="/view-packaje"
             className={({ isActive }) =>
-              isActive ? "text-white" : "text-inactive"
+              isActive ? "link-active" : "text-inactive"
             }
             onClick={handleClose}
           >

@@ -8,7 +8,7 @@ import "./AppMover.css";
 import { ShowContext } from "./hooks/ShowContext";
 
 const AppMoover = () => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
   return (
     <ShowContext.Provider 
     value={{

@@ -1,0 +1,22 @@
+
+
+.content-process {
+    margin-top: 50px
+}
+
+/********* EMPTY **********/
+
+.content-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-process {
+    font-size: 50px;
+    text-align: center;
+    margin-left: 50px;
+}
+
+
+

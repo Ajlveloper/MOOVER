@@ -26,6 +26,7 @@ body {
     --color-text-white: #ffffff;
     --color-text-black: #000000;
     --color-orange    : #fe5a0e;
+    --color-red-dark    : #cf0303;
     --pane-padding    : 5px 42px;
 }
 
@@ -57,6 +58,10 @@ textarea {
     height  : 100%;
     top     : 0%;
     z-index : 20;
+}
+
+.orange {
+    color: var(--color-orange)
 }
 
 .first {
