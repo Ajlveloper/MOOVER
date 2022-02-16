@@ -94,6 +94,7 @@
 }
 
 .close {
+    opacity: 0;
     text-align: center;
     width     : 3%;
     position  : absolute;
@@ -101,6 +102,11 @@
     font-size : 45px;
     right     : 44px;
     color     : var(--color-text-white);
+    transition: all .4s ease;
+}
+
+.close:active {
+    transform: scale(.9);
 }
 
 .text-white {

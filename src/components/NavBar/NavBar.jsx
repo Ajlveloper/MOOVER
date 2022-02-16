@@ -20,7 +20,10 @@ const NavBar = () => {
       .to("ul li", {
         opacity: 1,
         stagger: 0.3,
-      });
+      })
+      .to(".close", {
+        opacity: 1,
+      }, '-=.2')
   };
 
   const handleClose = () => {
@@ -78,6 +81,18 @@ const NavBar = () => {
             onClick={handleClose}
           >
             Estado del Paquete
+          </NavLink>
+        </li>
+
+        <li className="links">
+          <NavLink
+            to="/contacto"
+            className={({ isActive }) =>
+              isActive ? "link-active" : "text-inactive"
+            }
+            onClick={handleClose}
+          >
+            Contactanos
           </NavLink>
         </li>
       </ul>
