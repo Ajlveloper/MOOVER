@@ -7,23 +7,19 @@ import ViewPackaje from "./components/ViewPackaje/ViewPackaje";
 import "./AppMover.css";
 import { ShowContext } from "./hooks/ShowContext";
 import Contacto from "./components/Contacto/Contacto";
-import { reducerMessage } from "./reducerMessage";
 
-const init = () => {
-  return JSON.parse(localStorage.getItem('Orden'));
-}
 
 const AppMoover = () => {
   const [show, setShow] = useState(false);
 
-  const [message, dispatch] = useReducer(reducerMessage, [], init)
+  const [message, setMessage] = useState({})
   return (
     <ShowContext.Provider 
     value={{
       show,
       setShow,
       message,
-      dispatch
+      setMessage
     }}
     >
       <div className="app">

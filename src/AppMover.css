@@ -30,6 +30,10 @@ body {
     --pane-padding    : 5px 42px;
 }
 
+.orange {
+    color: var(--color-orange);
+}
+
 
 button {
     border    : none;

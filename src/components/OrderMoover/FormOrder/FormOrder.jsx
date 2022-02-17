@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { postMessage } from "../../../actions";
 import { ShowContext } from "../../../hooks/ShowContext";
 import useForm from "../../../hooks/useForm";
 import ModalSuccess from "../Modal-Success/ModalSuccess";
 import "./FormOrder.css";
+import axios from "axios";
 
 const FormOrder = () => {
   const { handleChangeInput, value, reset, errors } = useForm({
@@ -11,19 +11,19 @@ const FormOrder = () => {
     apellido: "",
     correo: "",
     mensaje: "",
-    estado: false
+    estado: false,
   });
 
-  const { show, setShow, dispatch } = useContext(ShowContext);
+  const { show, setShow } = useContext(ShowContext);
 
   const { nombre, apellido, correo, mensaje } = value;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(postMessage(value))
+    const { data } = await axios.post("api/order", value);
 
-    localStorage.setItem("Orden", JSON.stringify(value));
+    localStorage.setItem("Orden", JSON.stringify(data));
 
     setShow(!show);
 

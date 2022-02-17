@@ -1,21 +1,19 @@
-import React from 'react'
-import OrderComplete from './OrderComplete/OrderComplete'
-import OrderProcess from './OrderProcess/OrderProcess'
+import axios from "axios";
+import React from "react";
+import OrderComplete from "./OrderComplete/OrderComplete";
+import OrderProcess from "./OrderProcess/OrderProcess";
 
 const ViewPackaje = () => {
 
-  const order = JSON.parse(localStorage.getItem('Orden')) || {};
+  const getMessage = async () => {
+    const order = JSON.parse(localStorage.getItem("Orden"));
+    const { data } = await axios.get(`api/order/${order.uid}`);
+    return data;
+  }
+  getMessage().then(data => localStorage.setItem('Message', data)).catch(err => console.log(err));
 
-  console.log(order);
-  return (
+  const message = JSON.parse(localStorage.getItem("Orden"));
+  return !message?.estado ? <OrderProcess /> : <OrderComplete />;
+};
 
-      !order.estado
-      ?  (
-        <OrderProcess />
-      )
-      : (
-        <OrderComplete />
-      )
-  )}
-
-export default ViewPackaje
+export default ViewPackaje;
