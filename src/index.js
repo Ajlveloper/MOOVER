@@ -6,7 +6,6 @@ import axios from "axios";
 
 // axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.baseURL = "https://back-moover.herokuapp.com/";
-
 ReactDOM.render(
     <Router>
       <AppMoover />
