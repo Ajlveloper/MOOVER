@@ -69,7 +69,7 @@
     background-color   : var(--color-orange);
 }
 
-.navbar .links {
+.links {
     opacity: 0;
 }
 

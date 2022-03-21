@@ -2,32 +2,47 @@ import React, { useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "./NavBar.css";
 import { gsap } from "gsap";
+import { listNavBar } from "../../helpers/listNavBar";
 
 const NavBar = () => {
   const el = useRef();
-  const tl = useRef(null);
+  const timeline = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.out" } })
+  const closeRef = useRef(null);
+  const listRef = useRef([]);
+  listRef.current = [];
+
 
   const location = useLocation();
 
   const handleShow = () => {
-    tl.current = gsap
-      .timeline({ defaults: { duration: .5, ease: "power2.out" } })
-      .to(el.current, {
+    
+    timeline.to(el.current, {
         opacity: 1,
-        zIndex: 99,
+        zIndex: 20,
       })
-      .to("ul li", {
-        opacity: 1,
-        stagger: 0.3,
+      listRef.current.forEach(list => {
+        timeline.to(list, {
+          opacity: 1,
+          stagger: 0.1,
+        })
       })
-      .to(".close", {
-        opacity: 1,
-      }, '-=.2')
+      timeline.to(
+        closeRef.current,
+        {
+          opacity: 1,
+        },
+        "-=.2"
+      );
   };
 
   const handleClose = () => {
-    tl.current.reversed(true);
+    timeline.reversed(true);
   };
+
+  const addRefList = (el) => {
+    if (el && !listRef.current.includes(el)) listRef.current.push(el);
+  }
+
 
   return (
     <>
@@ -35,7 +50,12 @@ const NavBar = () => {
         <div className="navigation">
           <h2 className="title-Nav">MOOVER</h2>
           <div className="box"></div>
-          <button className={location.pathname !== '/' ? 'color-orangeMenu' : `menuShow`} onClick={handleShow}>
+          <button
+            className={
+              location.pathname !== "/" ? "color-orangeMenu" : `menuShow`
+            }
+            onClick={handleShow}
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -43,57 +63,23 @@ const NavBar = () => {
         </div>
       </nav>
       <ul ref={el} className={"navbar"}>
-        <button onClick={handleClose} className="close">
+        <button ref={closeRef} onClick={handleClose} className="close">
           X
         </button>
 
-        <li className="links">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "link-active" : "text-inactive"
-            }
-            onClick={handleClose}
-          >
-            Inicio
-          </NavLink>
-        </li>
-
-        <li className="links">
-          <NavLink
-            to="/order-moover"
-            className={({ isActive }) =>
-              isActive ? "link-active" : "text-inactive"
-            }
-            onClick={handleClose}
-          >
-            Solicitar Moover
-          </NavLink>
-        </li>
-
-        <li className="links">
-          <NavLink
-            to="/view-packaje"
-            className={({ isActive }) =>
-              isActive ? "link-active" : "text-inactive"
-            }
-            onClick={handleClose}
-          >
-            Estado del Paquete
-          </NavLink>
-        </li>
-
-        <li className="links">
-          <NavLink
-            to="/contacto"
-            className={({ isActive }) =>
-              isActive ? "link-active" : "text-inactive"
-            }
-            onClick={handleClose}
-          >
-            Contactanos
-          </NavLink>
-        </li>
+        {listNavBar.map(({ title, path }) => (
+          <li className="links" key={title} ref={addRefList}>
+            <NavLink
+              to={path}
+              className={({ isActive }) =>
+                isActive ? "link-active" : "text-inactive"
+              }
+              onClick={handleClose}
+            >
+              { title }
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </>
   );
