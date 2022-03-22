@@ -1,3 +1,9 @@
+.inicio {
+    width   : 100%;
+    height  : 100%;
+    overflow: hidden;
+}
+
 .inicio h1 {
     position   : absolute;
     top        : 26%;
@@ -24,10 +30,10 @@
     background-position: center center;
     background-size    : cover;
     background-repeat  : no-repeat;
-    z-index: -3;
+    z-index            : -3;
 }
 
-.inicio .overlayTitle::after {
+.overlayTitle {
     content            : "";
     top                : -77%;
     right              : -40%;
@@ -39,8 +45,12 @@
     opacity            : .8;
     /* border-radius   : 50%; */
     transform          : scale(4.7) skew(50deg, -78deg) rotate(33deg);
+    
 }
 
+/* .inicio .overlayTitle::after {
+}
+ */
 .inicio span {
     display    : block;
     position   : absolute;

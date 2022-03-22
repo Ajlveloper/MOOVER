@@ -19,11 +19,22 @@ body {
     right   : 0;
     left    : 0;
     bottom  : 0;
+}
+.hiddenActive {
     overflow: hidden;
 }
 
+.hiddenDisable {
+    position: absolute;
+    top     : 0;
+    right   : 0;
+    left    : 0;
+    bottom  : 0;
+    overflow: initial;
+}
+
 :root {
-    --color-text-white: #ffffff;
+    --color-text-white: #fff;
     --color-text-black: #000000;
     --color-orange    : #fe5a0e;
     --color-red-dark    : #cf0303;

@@ -1,7 +1,4 @@
 /******************** FORMUARIO MOOVER *************/
-
-
-
 .form-order {
     flex-basis     : 60%;
     display        : flex;
@@ -16,7 +13,6 @@
     width          : 70%;
     height         : 80%;
     box-shadow     : 2px 2px 2px var(--color-orange), -2px 2px 2px var(--color-orange);
-    margin-bottom: 125px;
 }
 
 .title-order {
@@ -76,11 +72,27 @@
     transition: all .5s ease;
 }
 
+.contentNewOrder {
+    font-size: 30px;
+}
+
+.newOrder {
+    font-size: 30px;
+    width: 100%;
+    background-color: var(--color-orange);
+    padding: 10px;
+    color: var(--color-text-white);
+    font-size: 30px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px var(--color-orange), 2px 2px 4px var(--color-orange);;
+    transition: all .5s ease;
+}
+
 
 /************ Errors ***********/
 .error {
     display: inline;
     color: var(--color-red-dark);
-    transform: translate(1%, -100%);
+    transform: translate(1%, -50%);
     font-size: 11px;
 }

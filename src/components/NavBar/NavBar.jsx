@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "./NavBar.css";
 import { gsap } from "gsap";
@@ -6,43 +6,54 @@ import { listNavBar } from "../../helpers/listNavBar";
 
 const NavBar = () => {
   const el = useRef();
-  const timeline = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.out" } })
   const closeRef = useRef(null);
   const listRef = useRef([]);
   listRef.current = [];
 
+  const [toggle, setToggle] = useState(false);
+  
 
   const location = useLocation();
 
-  const handleShow = () => {
-    
-    timeline.to(el.current, {
-        opacity: 1,
-        zIndex: 20,
-      })
-      listRef.current.forEach(list => {
-        timeline.to(list, {
-          opacity: 1,
-          stagger: 0.1,
-        })
-      })
-      timeline.to(
-        closeRef.current,
-        {
-          opacity: 1,
-        },
-        "-=.2"
-      );
-  };
+  const timeline = gsap.timeline({
+    defaults: { duration: 0.2, ease: "power2.out" },
+  });
 
+  useEffect(() => {
+      if(toggle) {
+        timeline.to(el.current, {
+          opacity: 1,
+          zIndex: 20,
+        });
+        listRef.current.forEach((list) => {
+          timeline.to(list, {
+            opacity: 1,
+            stagger: 0.1,
+          });
+        });
+        timeline.to(
+          closeRef.current,
+          {
+            opacity: 1,
+          },
+          "-=.1"
+        );
+      }
+  }, [toggle])
+  
+  
+  const handleShow = () => {
+    setToggle(!toggle)
+  };
+  
   const handleClose = () => {
     timeline.reversed(true);
+    setToggle(!toggle)
   };
 
   const addRefList = (el) => {
     if (el && !listRef.current.includes(el)) listRef.current.push(el);
-  }
-
+  };
 
   return (
     <>
@@ -76,7 +87,7 @@ const NavBar = () => {
               }
               onClick={handleClose}
             >
-              { title }
+              {title}
             </NavLink>
           </li>
         ))}

@@ -10,7 +10,7 @@ const ViewPackaje = () => {
     const { data } = await axios.get(`api/order/${order.uid}`);
     return data;
   }
-  getMessage().then(data => localStorage.setItem('Message', data)).catch(err => console.log(err));
+  getMessage().then(data => localStorage.setItem('Message', JSON.stringify(data))).catch(err => console.log(err));
 
   const message = JSON.parse(localStorage.getItem("Orden"));
   return !message?.estado ? <OrderProcess /> : <OrderComplete />;
