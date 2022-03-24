@@ -70,9 +70,9 @@ const Order = ({ handleSubmit, handleChangeInput, errors, value }) => {
           {errors.mensaje && <span className="error">{errors.mensaje}</span>}
 
           <button
-            disabled={nombre && apellido && correo && mensaje && false}
+            disabled={nombre && apellido && errors.correo === undefined && mensaje ? false : true}
             className={
-              nombre && apellido && correo && mensaje
+              nombre && apellido && errors.correo === undefined && mensaje
                 ? "button-submit-order"
                 : "errors-desibled"
             }

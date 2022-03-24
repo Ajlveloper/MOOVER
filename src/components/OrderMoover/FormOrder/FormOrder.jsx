@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useMemo } from "react";
 import { ShowContext } from "../../../hooks/ShowContext";
 import useForm from "../../../hooks/useForm";
 import ModalSuccess from "../Modal-Success/ModalSuccess";
@@ -6,7 +6,7 @@ import "./FormOrder.css";
 import axios from "axios";
 import Order from "./Order";
 
-const FormOrder = () => {
+const FormOrder = ({ setNewOrder }) => {
   const { handleChangeInput, value, reset, errors } = useForm({
     nombre: "",
     apellido: "",
@@ -19,9 +19,16 @@ const FormOrder = () => {
 
   useEffect(() => {
     return () => {
-      setShow(!show);
+      if (show) {
+        setShow(!show);
+        setNewOrder((order) => !order);
+      }
     };
   }, []);
+
+  // const valueMemo = useMemo(() => value, [value]);
+
+  // console.log(valueMemo);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +36,7 @@ const FormOrder = () => {
     const { data } = await axios.post("api/order", value);
 
     localStorage.setItem("Orden", JSON.stringify(data));
+
     setShow(!show);
     reset();
   };

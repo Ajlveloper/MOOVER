@@ -23,22 +23,6 @@ const useForm = (valueform = {}) => {
          setValue(valueform);
     }
 
-    /* const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(value);
-    } */
-
-    /* const handleShadow = () => {
-   setFormState({
-       ...formState,
-       shadow: !shadow
-   })
-   
-
- }
-*/
-
-
     return { handleChangeInput, value, reset, errors }
 }
 

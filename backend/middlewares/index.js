@@ -1,7 +1,7 @@
 
 
-const validateRoles = require('./validate-name');
+const validate = require('./validate');
 
 module.exports = {
-    ...validateRoles,
+    ...validate,
 }

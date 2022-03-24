@@ -15,12 +15,11 @@
 
 
 .content-info {
-    height: 100%;
+    height         : 100%;
     display        : flex;
     align-items    : center;
-    justify-content: space-between;
-    transform      : translate(30px, -8%);
-    border-right: 1px solid var(--color-orange);
+    justify-content: center;
+    border-right   : 1px solid var(--color-orange);
 }
 
 .content-info div h3 {
@@ -41,11 +40,9 @@
 /******** IMAGES CONTACT  *********/
 
 .image-contact {
-    /* height         : 700px; */
     display        : flex;
-    flex-direction : column;
     align-items    : center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .circle {
@@ -81,10 +78,13 @@
     object-fit: contain;
     width     : 100%;
     height    : 860px;
-    transform : translateY(114px);
+    transform: perspective(900px) translateY(114px) rotateY(-28deg);
+    /* transform : translateY(114px); */
     transition: all .4s ease-in;
+    filter: drop-shadow(0px 3px 2px var(--color-orange));
 }
 
 .circle1:hover img {
     transform: translateY(33px);
+    filter: drop-shadow(0px 3px 5px var(--color-orange));
 }

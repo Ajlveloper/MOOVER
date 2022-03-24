@@ -1,19 +1,29 @@
-import axios from "axios";
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { getMessage } from "../../helpers/fetchOrder";
+import { ShowContext } from "../../hooks/ShowContext";
 import OrderComplete from "./OrderComplete/OrderComplete";
 import OrderProcess from "./OrderProcess/OrderProcess";
 
 const ViewPackaje = () => {
+  const [response, setResponse] = useState({}) ;
 
-  const getMessage = async () => {
-    const order = JSON.parse(localStorage.getItem("Orden"));
-    const { data } = await axios.get(`api/order/${order.uid}`);
-    return data;
-  }
-  getMessage().then(data => localStorage.setItem('Message', JSON.stringify(data))).catch(err => console.log(err));
+  const { show } = useContext(ShowContext)
 
-  const message = JSON.parse(localStorage.getItem("Orden"));
-  return !message?.estado ? <OrderProcess /> : <OrderComplete />;
+
+  useEffect(() => {
+    getMessage()
+      .then((data) => {
+        localStorage.setItem("Message", JSON.stringify(data));
+        const responseMessage = JSON.parse(localStorage.getItem("Message")) || {};
+        setResponse(responseMessage);
+      })
+      .catch((error) => {
+        if(error) return;
+      });
+  }, []);
+
+  const { estado } = response;
+  return !estado ? <OrderProcess /> : <OrderComplete />;
 };
 
 export default ViewPackaje;

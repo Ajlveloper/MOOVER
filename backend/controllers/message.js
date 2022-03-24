@@ -3,9 +3,15 @@ const { Message } = require('../models');
 
 const getMessage = async (req, res) => {
     const { id } = req.params;
-    const message = await Message.findById(id);
+    try {
+        const message = await Message.findById(id);
+        res.json(message);
+    } catch (error) {
+        console.log(error);
+        // return res.status(400).json({ msg: 'Error al buscar el id del mensaje' })
+        
+    }
 
-    res.json(message);
 }
 
 
