@@ -3,6 +3,7 @@ import axios from "axios";
 export const getMessage = async () => {
   try {
     const order = JSON.parse(localStorage.getItem("Orden")) || {};
+    if (!order?.uid) return; 
     const { data } = await axios.get(`api/order/${order?.uid}`);
     return data;
   } catch (error) {

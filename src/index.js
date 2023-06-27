@@ -4,8 +4,8 @@ import AppMoover from './AppMoover';
 import { BrowserRouter as Router } from 'react-router-dom'
 import axios from "axios";
 
-// axios.defaults.baseURL = "http://localhost:3001";
-axios.defaults.baseURL = "https://moover-back.herokuapp.com/";
+
+axios.defaults.baseURL = process.env.REACT_APP_PORT || "http://localhost:3001";
 ReactDOM.render(
     <Router>
       <AppMoover />
